@@ -27,3 +27,9 @@ Open <http://localhost:3000>.
 ## Deploy on Vercel
 
 Import this repository as a Next.js project in Vercel and deploy with the default settings. There are no environment variables or server data services to configure. Because records live in the browser, users should download a backup if they need to move devices or clear browser data.
+
+## Install on iPhone
+
+Deploy over HTTPS, then open the site in Safari and choose **Share → Add to Home Screen**. The Home Screen icon opens Boardmark in standalone mode. If you have existing records in Safari, use Settings to download a backup and import it in the installed app if its storage is separate on your iPhone.
+
+The production app registers `/sw.js`. It stores the public app shell, icons, and versioned Next.js assets for offline launches. Your attendance records still use this device's local storage, so the existing check-in, check-out, and editing features work offline after the app has loaded. Other routes and any future server features require the network. The service worker does not queue writes or cache API responses. New deployments use the network for page navigation and refresh the saved shell and assets. Service-worker caching is disabled during local development.

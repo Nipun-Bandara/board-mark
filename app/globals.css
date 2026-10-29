@@ -27,3 +27,17 @@
 @media(max-width:1240px){.bill-card-footer{left:20px;right:20px}.bill-card-footer strong{font-size:12px}}
 @media(max-width:720px){.bill-card{min-height:235px}}
 @media(max-width:520px){.bill-card{min-height:220px}.bill-card .stat-icon{margin-bottom:16px}.bill-card-days{font-size:30px}.bill-card-days span{font-size:12px}.bill-card-footer{left:16px;right:16px;bottom:15px;padding-top:10px}.bill-card-footer strong{font-size:11px}}
+
+/* Standalone iPhone windows can extend into the notch and Home indicator areas. */
+body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.app-shell{min-height:calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-x:clip}
+@supports(height:100dvh){.app-shell{min-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom))}}
+@media(max-width:720px){
+  .sidebar{top:env(safe-area-inset-top);bottom:env(safe-area-inset-bottom);height:auto;min-height:0}
+  .menu-button,.mobile-close,.page-heading>.button,.dialog-close,.history-actions button,.cycle-control button,.bill-tabs button,.bill-card-footer button{min-width:44px;min-height:44px}
+  .button-default,.button-sm,.hero-button{min-height:44px}
+  input,select,textarea{font-size:16px}
+  .field input,.field select{min-height:44px}
+  .dialog-content{max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px);overflow-y:auto}
+  .toast{bottom:calc(25px + env(safe-area-inset-bottom))}
+}
